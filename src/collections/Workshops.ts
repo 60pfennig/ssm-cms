@@ -8,4 +8,7 @@ export const Workshops: CollectionConfig = {
       name: "name",
     },
   ],
+  admin: {
+    useAsTitle: "name",
+  },
 };

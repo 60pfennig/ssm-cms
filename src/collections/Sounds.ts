@@ -36,4 +36,10 @@ export const Sounds: CollectionConfig = {
       name: "description",
     },
   ],
+  access: {
+    read: () => true,
+  },
+  admin: {
+    useAsTitle: "name",
+  },
 };
