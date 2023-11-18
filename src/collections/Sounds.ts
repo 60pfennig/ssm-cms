@@ -30,6 +30,9 @@ export const Sounds: CollectionConfig = {
       relationTo: SoundMedia.slug,
       name: "audioFile",
       required: true,
+      hooks: {
+        beforeChange: [(args) => console.log(args.value)],
+      },
     },
     {
       type: "text",

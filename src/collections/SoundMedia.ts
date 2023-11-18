@@ -1,4 +1,5 @@
 import { CollectionConfig } from "payload/dist/collections/config/types";
+import { normalizeAudio } from "../lib/normalizeAudio";
 
 export const SoundMedia: CollectionConfig = {
   slug: "soundMedia",
@@ -10,5 +11,14 @@ export const SoundMedia: CollectionConfig = {
   fields: [],
   access: {
     read: () => true,
+  },
+  hooks: {
+    beforeChange: [
+      (args) => {
+        const fileName = args.data.filename;
+        if (process.env.SOUND_FILE_STORAGE_PATH)
+          normalizeAudio(process.env.SOUND_FILE_STORAGE_PATH, fileName);
+      },
+    ],
   },
 };

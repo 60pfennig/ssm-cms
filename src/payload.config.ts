@@ -9,7 +9,23 @@ import { Workshops } from "./collections/Workshops";
 export default buildConfig({
   admin: {
     user: Users.slug,
+    webpack: (config) => {
+      return {
+        ...config,
+        resolve: {
+          ...config.resolve,
+          fallback: {
+            ...config.resolve.fallback,
+            fs: false,
+            path: false,
+            os: false,
+            child_process: false,
+          },
+        },
+      };
+    },
   },
+
   collections: [Users, Sounds, SoundMedia, Workshops],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),

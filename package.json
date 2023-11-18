@@ -15,6 +15,7 @@
     "generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:graphQLSchema"
   },
   "dependencies": {
+    "@dharmendrasha/ffmpeg-normalize": "^1.8.2",
     "@payloadcms/plugin-cloud": "^0.0.10",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
