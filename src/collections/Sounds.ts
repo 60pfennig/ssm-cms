@@ -4,6 +4,7 @@ import {
 } from "payload/dist/collections/config/types";
 import { SoundMedia } from "./SoundMedia";
 import { Workshops } from "./Workshops";
+import { ImageMedia } from "./ImageMedia";
 
 export const Sounds: CollectionConfig = {
   slug: "sounds",
@@ -30,13 +31,16 @@ export const Sounds: CollectionConfig = {
       relationTo: SoundMedia.slug,
       name: "audioFile",
       required: true,
-      hooks: {
-        beforeChange: [(args) => console.log(args.value)],
-      },
     },
     {
       type: "text",
       name: "description",
+    },
+    {
+      type: "upload",
+      relationTo: ImageMedia.slug,
+      name: "image",
+      required: false,
     },
   ],
   access: {

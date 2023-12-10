@@ -12,6 +12,7 @@ export interface Config {
     sounds: Sound;
     soundMedia: SoundMedia;
     workshops: Workshop;
+    imageMedia: ImageMedia;
   };
   globals: {};
 }
@@ -36,6 +37,7 @@ export interface Sound {
   lng: number;
   audioFile: string | SoundMedia;
   description?: string;
+  image?: string | ImageMedia;
   updatedAt: string;
   createdAt: string;
 }
@@ -46,6 +48,17 @@ export interface Workshop {
   createdAt: string;
 }
 export interface SoundMedia {
+  id: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string;
+  filename?: string;
+  mimeType?: string;
+  filesize?: number;
+  width?: number;
+  height?: number;
+}
+export interface ImageMedia {
   id: string;
   updatedAt: string;
   createdAt: string;

@@ -10,6 +10,7 @@ import webpack from "webpack";
 export default buildConfig({
   admin: {
     user: Users.slug,
+    bundler: webpackBundler(),
     webpack: (config) => {
       return {
         ...config,
