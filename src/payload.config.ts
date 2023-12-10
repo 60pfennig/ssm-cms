@@ -5,6 +5,7 @@ import { payloadCloud } from "@payloadcms/plugin-cloud";
 import { Sounds } from "./collections/Sounds";
 import { SoundMedia } from "./collections/SoundMedia";
 import { Workshops } from "./collections/Workshops";
+import webpack from "webpack";
 
 export default buildConfig({
   admin: {
@@ -25,7 +26,6 @@ export default buildConfig({
       };
     },
   },
-
   collections: [Users, Sounds, SoundMedia, Workshops],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
