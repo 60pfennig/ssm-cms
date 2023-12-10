@@ -1,9 +1,10 @@
+import normalize from "@dharmendrasha/ffmpeg-normalize";
+import fs from "fs";
+
 export const normalizeAudio: (
   uploadPath: string,
   filename: string
 ) => void = async (uploadPath, fileName) => {
-  const normalize = await import("@dharmendrasha/ffmpeg-normalize");
-  const fs = await import("fs");
   const orgFile = uploadPath + "/" + fileName;
   const normFile = uploadPath + "/normalized_" + fileName;
   normalize({

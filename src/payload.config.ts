@@ -5,7 +5,13 @@ import { payloadCloud } from "@payloadcms/plugin-cloud";
 import { Sounds } from "./collections/Sounds";
 import { SoundMedia } from "./collections/SoundMedia";
 import { Workshops } from "./collections/Workshops";
-import webpack from "webpack";
+import { webpackBundler } from "@payloadcms/bundler-webpack";
+import { mongooseAdapter } from "@payloadcms/db-mongodb";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { ImageMedia } from "./collections/ImageMedia";
+
+const mockNormalizeFunction = path.resolve(__dirname, "mock/emptyObject.js");
+const realNormalizeFunction = path.resolve(__dirname, "lib/normalizeAudio");
 
 export default buildConfig({
   admin: {
@@ -16,6 +22,10 @@ export default buildConfig({
         ...config,
         resolve: {
           ...config.resolve,
+          alias: {
+            ...config.resolve.alias,
+            [realNormalizeFunction]: mockNormalizeFunction,
+          },
           fallback: {
             ...config.resolve.fallback,
             fs: false,
@@ -27,7 +37,9 @@ export default buildConfig({
       };
     },
   },
-  collections: [Users, Sounds, SoundMedia, Workshops],
+  db: mongooseAdapter({ url: process.env.MONGODB_URI }),
+  editor: lexicalEditor(),
+  collections: [Users, SoundMedia, ImageMedia, Sounds, Workshops],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },

@@ -5,7 +5,7 @@ export const ImageMedia: CollectionConfig = {
   slug: "imageMedia",
   upload: {
     staticURL: "/media/images",
-    staticDir: process.env.SOUND_FILE_STORAGE_PATH,
+    staticDir: process.env.IMAGE_FILE_STORAGE_PATH,
     mimeTypes: ["image/*"],
   },
   fields: [],
