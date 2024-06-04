@@ -47,5 +47,8 @@ export default buildConfig({
     schemaOutputFile: path.resolve(__dirname, "generated-schema.graphql"),
   },
   plugins: [],
-  cors: ["http://localhost:3001", "http://localhost:3000"],
+  cors:
+    process.env.FRONTEND_BASE_URI !== undefined
+      ? [process.env.FRONTEND_BASE_URI]
+      : [],
 });
