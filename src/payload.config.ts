@@ -31,6 +31,7 @@ export default buildConfig({
             path: false,
             os: false,
             child_process: false,
+            readline: false,
           },
         },
       };
