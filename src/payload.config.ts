@@ -1,14 +1,13 @@
-import { buildConfig } from "payload/config";
-import path from "path";
-import Users from "./collections/Users";
-import { payloadCloud } from "@payloadcms/plugin-cloud";
-import { Sounds } from "./collections/Sounds";
-import { SoundMedia } from "./collections/SoundMedia";
-import { Workshops } from "./collections/Workshops";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import path from "path";
+import { buildConfig } from "payload/config";
 import { ImageMedia } from "./collections/ImageMedia";
+import { SoundMedia } from "./collections/SoundMedia";
+import { Sounds } from "./collections/Sounds";
+import Users from "./collections/Users";
+import { Workshops } from "./collections/Workshops";
 
 const mockNormalizeFunction = path.resolve(__dirname, "mock/emptyObject.js");
 const realNormalizeFunction = path.resolve(__dirname, "lib/normalizeAudio");
@@ -47,8 +46,5 @@ export default buildConfig({
     schemaOutputFile: path.resolve(__dirname, "generated-schema.graphql"),
   },
   plugins: [],
-  cors:
-    process.env.FRONTEND_BASE_URI !== undefined
-      ? [process.env.FRONTEND_BASE_URI]
-      : [],
+  cors: process.env.FRONTEND_BASE_URI !== undefined ? [process.env.FRONTEND_BASE_URI, "http://localhost:8081"] : [],
 });
